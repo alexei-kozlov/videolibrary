@@ -23,7 +23,8 @@ export default {
 
 <style scoped>
 .header {
-  border: 3px solid #00f;
+  /*border: 3px solid #00f;*/
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,6 +39,13 @@ export default {
   }
 }
 
+@media screen and (max-width: 425px) {
+  .header {
+    flex-direction: row;
+    margin: 0 auto 20px;
+  }
+}
+
 .header__logo {
   width: 10vw;
   height: auto;
@@ -46,6 +54,12 @@ export default {
 @media screen and (max-width: 600px) {
   .header__logo {
     width: 20vw;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__logo {
+    width: 50vw;
   }
 }
 
@@ -82,20 +96,56 @@ export default {
   }
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+@media screen and (max-width: 425px) {
+  #nav {
+    width: 50%;
+    padding: 20px 0;
+    flex-direction: column;
+  }
 }
 
-#nav a:hover,
-#nav a:focus {
-  font-weight: bold;
+#nav a {
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: capitalize;
   text-decoration: none;
+  color: #2c3e50;
+  position: relative;
+}
+
+@media screen and (max-width: 850px) {
+  #nav a {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 425px) {
+  #nav a {
+    margin: 10px 0;
+  }
+}
+#nav a::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: all .5s ease;
+}
+#nav a:hover::before,
+#nav a:focus::before {
+  width: 99%;
+  left: 0;
+  transition: all .5s ease;
 }
 
 #nav a.router-link-exact-active {
   color: #fff;
   text-shadow: 2px 2px 2px #000;
-  text-decoration: none;
+  transform: translateY(-2px);
 }
 </style>

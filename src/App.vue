@@ -19,13 +19,4 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  width: 90%;
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-}
-</style>
+<style></style>

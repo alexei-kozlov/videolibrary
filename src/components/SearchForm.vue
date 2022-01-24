@@ -1,9 +1,9 @@
 <template>
-  <form class="search__form" action="javascript:void(0);">
+  <form class="search__form" method="get" action="javascript:void(0);">
     <label>
-      <input class="search__input" type="text" placeholder="Enter movie name" autofocus>
+      <input id="search" class="search__input" type="text" placeholder="enter movie name" autofocus>
     </label>
-    <button class="search__btn btn" type="button">
+    <button id="submit" class="search__btn btn" type="button">
       <span class="search__btn-name">Search</span>
       <svg class="search__btn-icon" fill="#fff"
            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.531 56.53" width="20" height="20">
