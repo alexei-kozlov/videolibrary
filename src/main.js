@@ -1,12 +1,18 @@
+window.$ = JQuery;
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import JQuery from 'jquery'
-window.$ = JQuery
+import CustomInputText from '@/components/ui/CustomInputText.vue';
+import CustomTextarea from '@/components/ui/CustomTextarea.vue';
+import CustomBtn from '@/components/ui/CustomBtn.vue';
 
-createApp(App).use(router).mount('#app')
-
-console.log("Hi!");
+const app = createApp(App);
+app.use(router).mount('#app');
+app.component('CustomInputText', CustomInputText);
+app.component('CustomTextarea', CustomTextarea);
+app.component('CustomBtn', CustomBtn);
 
 //http://www.omdbapi.com/?t=Agnelli&y=2017&plot=full&r=json&apikey=1ce9470d
 (function ($) {
@@ -41,7 +47,9 @@ console.log("Hi!");
               movieHTML += '<span class="movie__year">' + '(' + movie.Year + ')' + '</span>';
               movieHTML += '<a class="btn movie__btn" href="http://www.imdb.com/title/' + movie.imdbID + '" target="_blank">To IMDb <span class="btn__arrow">&rarr;</span></a></li>';
             });
-          } else movieHTML += '<li class="movie__no-movies">No movies found that match: ' + '"' + searchMovie + '"';
+          } else movieHTML += '<li class="movie__no-movies" ' +
+              'style="text-align: left; width: 100%;">' +
+              'No movies found that match: ' + '"' + searchMovie + '"';
 
           $('.movie__list').html(movieHTML);
         },// Конец поиска

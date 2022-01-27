@@ -1,6 +1,6 @@
 <template>
   <form class="search__form" method="get" action="javascript:void(0);">
-    <label>
+    <label class="search__label">
       <input id="search" class="search__input" type="text" placeholder="enter movie name" autofocus>
     </label>
     <button id="submit" class="search__btn btn" type="button">
@@ -102,6 +102,10 @@ export default {
     font-size: 4vw;
     text-align: center;
   }
+}
+
+.search__label {
+  display: initial;
 }
 .search__btn {
   position: absolute;
