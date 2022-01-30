@@ -1,8 +1,5 @@
 <template>
   <footer class="footer" data-vue-component="Footer">
-    <!--<div class="footer__logo">
-      <img src="data:image/png" alt="Search Movie" class="footer__logo">
-    </div>-->
     <div class="footer__text">
       <h2 class="footer__title">Search my movie</h2>
       <p class="footer__copyright">©2022 - All rights reserved</p>
@@ -28,11 +25,6 @@ export default {
   margin: 20px auto;
   padding: 10px 0;
   border-top: 2px solid #fff;
-}
-
-.footer__logo {
-  width: 12vw;
-  height: auto;
 }
 
 .footer__title {

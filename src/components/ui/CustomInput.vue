@@ -1,15 +1,14 @@
 <template>
-  <label for="text_about">{{ label }}</label>
-  <textarea id="text_about" class="form-control"
-            :placeholder="placeholderText"
-            v-model="inputValue">
-    </textarea>
-  <small class="text-left mb-3">About you: {{ inputValue }}</small>
+  <label for="user_name">{{ label }}</label>
+  <input id="user_name" class="form-control" type="text"
+         v-model="inputValue"
+         :placeholder="placeholderText">
+  <small class="text-left mb-3">Your name: {{ inputValue }}</small>
 </template>
 
 <script>
 export default {
-  name: "CustomTextarea",
+  name: "CustomInput",
   data() {
     return {
       inputValue: '',

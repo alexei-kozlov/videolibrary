@@ -1,4 +1,5 @@
 <template>
+  <img class="bg-image" :src="customBg" alt="Image">
   <Header></Header>
   <main>
     <router-view/>
@@ -15,8 +16,25 @@ export default {
   components: {
     Header,
     Footer,
+  },
+  data() {
+    return {
+      customBg: null,
+    }
+  },
+  created() {
+    this.customBg = require('@/assets/img/main-bg.jpg');
   }
 }
 </script>
 
-<style></style>
+<style>
+.bg-image {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+</style>

@@ -3,16 +3,20 @@ window.$ = JQuery;
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 import JQuery from 'jquery'
-import CustomInputText from '@/components/ui/CustomInputText.vue';
+import CustomInput from '@/components/ui/CustomInput.vue';
 import CustomTextarea from '@/components/ui/CustomTextarea.vue';
 import CustomBtn from '@/components/ui/CustomBtn.vue';
+import CustomRadio from '@/components/ui/CustomRadio.vue';
 
 const app = createApp(App);
 app.use(router).mount('#app');
-app.component('CustomInputText', CustomInputText);
+app.use(store);
+app.component('CustomInput', CustomInput);
 app.component('CustomTextarea', CustomTextarea);
 app.component('CustomBtn', CustomBtn);
+app.component('CustomRadio', CustomRadio);
 
 //http://www.omdbapi.com/?t=Agnelli&y=2017&plot=full&r=json&apikey=1ce9470d
 (function ($) {

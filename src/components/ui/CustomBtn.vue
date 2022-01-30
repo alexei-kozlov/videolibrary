@@ -1,10 +1,19 @@
 <template>
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">{{ label }}</button>
 </template>
 
 <script>
 export default {
-  name: "CustomBtn"
+  name: "CustomBtn",
+  data() {
+    return {}
+  },
+  props: {
+    label: {
+      type: String,
+      default: 'Custom Btn',
+    },
+  },
 }
 </script>
 

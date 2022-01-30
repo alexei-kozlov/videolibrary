@@ -3,24 +3,36 @@
     <h1 class="title profile__title">Profile</h1>
     <p class="profile__content">Information about the user of the service will be placed here</p>
     <form class="profile__form container p-0" action="javascript:void(0);">
-      <CustomInputText></CustomInputText>
-      <CustomTextarea></CustomTextarea>
-      <CustomBtn></CustomBtn>
+      <custom-input label="Name"
+                    v-model="your_name"
+                    placeholderText="Enter your name"></custom-input>
+      <custom-radio :options="radioOptions"
+                    v-model="gender"></custom-radio>
+      <custom-textarea label="About yourself"
+                       v-model="about_yourself"
+                       placeholderText="Tell me about yourself"></custom-textarea>
+      <custom-btn label="Save"
+                  @click="saveData = true"></custom-btn>
     </form>
   </section>
 </template>
 <script>
-import CustomInputText from '@/components/ui/CustomInputText.vue';
-import CustomTextarea from '@/components/ui/CustomTextarea.vue';
-import CustomBtn from '@/components/ui/CustomBtn.vue';
 
 export default {
   name: "Profile",
-  components: {
-    CustomInputText,
-    CustomTextarea,
-    CustomBtn
-  }
+  components: {},
+  data() {
+    return {
+      your_name: '',
+      about_yourself: '',
+      gender: '',
+      radioOptions: [
+        {value: 'male', label: 'Male'},
+        {value: 'female', label: 'Female'},
+      ],
+      saveData: false,
+    }
+  },
 }
 </script>
 
