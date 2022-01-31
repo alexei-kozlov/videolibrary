@@ -1,6 +1,6 @@
 <template>
   <div id="v-model-radiobutton"
-       class="custom-radio d-flex justify-content-start w-100">
+       class="custom-radio d-flex justify-content-start w-100 mb-4">
     <div class="custom-control custom-radio mr-5"
          v-for="option in options"
          :key="option">
@@ -8,7 +8,7 @@
       <label class="custom-control-label m-0" :for="option.value">{{ option.label }}</label>
     </div>
   </div>
-  <small class="text-left mb-3">Gender: {{ picked }}</small>
+  <!--<small class="text-left mb-3">Gender: {{ picked }}</small>-->
 </template>
 
 <script>

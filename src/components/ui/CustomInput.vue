@@ -1,9 +1,9 @@
 <template>
   <label for="user_name">{{ label }}</label>
-  <input id="user_name" class="form-control" type="text"
+  <input id="user_name" class="form-control mb-4" type="text"
          v-model="inputValue"
          :placeholder="placeholderText">
-  <small class="text-left mb-3">Your name: {{ inputValue }}</small>
+  <!--<small class="text-left mb-3">Your name: {{ inputValue }}</small>-->
 </template>
 
 <script>

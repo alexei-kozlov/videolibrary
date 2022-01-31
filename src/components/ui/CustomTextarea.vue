@@ -1,10 +1,10 @@
 <template>
   <label for="text_about">{{ label }}</label>
-  <textarea id="text_about" class="form-control"
+  <textarea id="text_about" class="form-control mb-4"
             :placeholder="placeholderText"
             v-model="inputValue">
-    </textarea>
-  <small class="text-left mb-3">About you: {{ inputValue }}</small>
+  </textarea>
+  <!--<small class="text-left mb-3">About you: {{ inputValue }}</small>-->
 </template>
 
 <script>
