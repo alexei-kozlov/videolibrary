@@ -37,9 +37,11 @@ export default {
   cursor: pointer;
   position: relative;
 }
+
 .btn:hover, .btn:focus {
   background: linear-gradient(45deg, #5474fd 0%, #5474fd 40%, #496bfe 40%, #496bfe 100%);
 }
+
 .btn:active {
   border: 1px solid #0039ff;
   opacity: 0.9;
@@ -54,17 +56,20 @@ export default {
   position: relative;
   margin: 50px auto;
 }
+
 @media screen and (max-width: 850px) {
   .search__form {
     margin: 30px auto;
     width: 75vw;
   }
 }
+
 @media screen and (max-width: 520px) {
   .search__form {
     height: 30px;
   }
 }
+
 .search__input {
   width: 78%;
   height: 100%;
@@ -78,25 +83,28 @@ export default {
   color: #5474fd;
   letter-spacing: 0.1em;
 }
+
 @media screen and (max-width: 520px) {
   .search__input {
     width: 88%;
   }
 }
+
 .search__input::placeholder {
   font-family: "Nova Mono", "Roboto Mono", monospace;
   font-size: 22px;
   color: rgba(84, 116, 253, 0.5);
   letter-spacing: 0.1em;
   text-align: left;
-  text-transform: uppercase;
   padding: 0 10px;
 }
+
 @media screen and (max-width: 600px) {
   .search__input::placeholder {
     padding: 0;
   }
 }
+
 @media screen and (max-width: 500px) {
   .search__input::placeholder {
     font-size: 4vw;
@@ -107,6 +115,7 @@ export default {
 .search__label {
   display: initial;
 }
+
 .search__btn {
   position: absolute;
   top: 0;
@@ -118,9 +127,11 @@ export default {
   outline: none;
   border-left: 2px solid #0039ff;
 }
+
 .search__btn:hover {
   background: #5474fd;
 }
+
 @media screen and (max-width: 520px) {
   .search__btn {
     width: 12%;
@@ -128,20 +139,24 @@ export default {
     padding: 5px;
   }
 }
+
 .search__btn-name {
   text-align: left;
 }
+
 @media screen and (max-width: 520px) {
   .search__btn-name {
     display: none;
   }
 }
+
 .search__btn-icon {
   position: absolute;
   top: 50%;
   right: 13px;
   transform: translateY(-50%);
 }
+
 @media screen and (max-width: 520px) {
   .search__btn-icon {
     right: 50%;

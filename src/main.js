@@ -1,22 +1,22 @@
-window.$ = JQuery;
-
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import JQuery from 'jquery'
+window.$ = JQuery;
 import CustomInput from '@/components/ui/CustomInput.vue';
 import CustomTextarea from '@/components/ui/CustomTextarea.vue';
 import CustomBtn from '@/components/ui/CustomBtn.vue';
 import CustomRadio from '@/components/ui/CustomRadio.vue';
 
-const app = createApp(App);
-app.use(router).mount('#app');
-app.use(store);
-app.component('CustomInput', CustomInput);
-app.component('CustomTextarea', CustomTextarea);
-app.component('CustomBtn', CustomBtn);
-app.component('CustomRadio', CustomRadio);
+createApp(App)
+    .component('CustomInput', CustomInput)
+    .component('CustomTextarea', CustomTextarea)
+    .component('CustomBtn', CustomBtn)
+    .component('CustomRadio', CustomRadio)
+    .use(router)
+    .use(store)
+    .mount('#app');
 
 //http://www.omdbapi.com/?t=Agnelli&y=2017&plot=full&r=json&apikey=1ce9470d
 (function ($) {
@@ -44,12 +44,12 @@ app.component('CustomRadio', CustomRadio);
               } else {
                 // Если нет, выведем "постер без постера"
                 let urlNoImage = 'https://m.media-amazon.com/images/S/sash/4FyxwxECzL-U1J8.png';
-                movieHTML += '<div class="movie__poster-placeholder"><img class="movie__no-poster" src="' + urlNoImage + '" alt="No Poster"></div>';
+                movieHTML += '<img class="movie__no-poster" src="' + urlNoImage + '" alt="No Poster" style="width: 100%;">';
               }
               movieHTML += '</div>';
-              movieHTML += '<span class="movie__title">' + movie.Title + '</span>';
+              movieHTML += '<div class="movie__bottom"><span class="movie__title">' + movie.Title + '</span>';
               movieHTML += '<span class="movie__year">' + '(' + movie.Year + ')' + '</span>';
-              movieHTML += '<a class="btn movie__btn" href="http://www.imdb.com/title/' + movie.imdbID + '" target="_blank">To IMDb <span class="btn__arrow">&rarr;</span></a></li>';
+              movieHTML += '<a class="btn movie__btn" href="http://www.imdb.com/title/' + movie.imdbID + '" target="_blank">To IMDb <span class="btn__arrow">&rarr;</span></a></div></li>';
             });
           } else movieHTML += '<li class="movie__no-movies" ' +
               'style="text-align: left; width: 100%;">' +

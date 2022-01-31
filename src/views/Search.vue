@@ -30,7 +30,6 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  align-items: flex-start;
 }
 
 .movie__item {
@@ -43,7 +42,7 @@ export default {
   background: rgba(255, 255, 255, 0.5);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .btn__arrow {
@@ -58,7 +57,8 @@ export default {
 .btn:hover .btn__arrow,
 .btn:focus .btn__arrow {
   transform: translate(8px, -60%);
-  transition-duration: .4s;
+  color: #fff;
+  transition-duration: .3s;
 }
 
 .movie__btn {
@@ -67,26 +67,30 @@ export default {
   width: 100px;
   height: 30px;
   margin: 10px auto;
-  border: 1px solid #fff;
   border-radius: 25px;
   font-size: 10px;
   line-height: 1.5;
   color: #fff;
   padding: 6px 0;
   letter-spacing: 0;
-  box-shadow: 0 0 10px 1px #000;
   background: linear-gradient(45deg, #496bfe 0%, #496bfe 40%, #5474fd 40%, #5474fd 100%);
   position: relative;
+  transition-duration: .3s;
 }
 
 .movie__btn:hover,
 .movie__btn:focus {
+  box-shadow: 3px 2px 6px rgb(0 0 0 / 60%), -3px 2px 6px rgb(0 0 0 / 60%);
   background: linear-gradient(45deg, #5474fd 0%, #5474fd 40%, #496bfe 40%, #496bfe 100%);
+  color: #fff;
+  transition-duration: .3s;
 }
 
-.movie__btn:active {
-  border: 1px solid #0039ff;
-  opacity: 0.9;
+.movie__btn:not(:disabled):not(.disabled):active {
+  border: 1px solid #fff;
+  background: linear-gradient(45deg, #496bfe 0%, #496bfe 40%, #5474fd 40%, #5474fd 100%);
+  opacity: .8;
+  transition-duration: .3s;
 }
 
 .movie__title,
