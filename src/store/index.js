@@ -1,16 +1,10 @@
-import {createStore} from "vuex";
+import {createStore} from 'vuex';
+import userStore from './user';
+import libraryStore from './library';
 
 export default createStore({
-  state() {
-    return {
-      your_name: '',
-      about_yourself: '',
-      gender: '',
-      movies_list: [],
-      movies_favourite: [],
-    }
+  modules: {
+    user: userStore,
+    library: libraryStore,
   },
-  getters: {},
-  mutations: {},
-  actions: {},
 })

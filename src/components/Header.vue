@@ -6,24 +6,33 @@
     </div>
     <div id="nav">
       <router-link to="/">Home</router-link>
-      <router-link to="/search">Search</router-link>
       <router-link to="/library">Library</router-link>
-      <router-link to="/profile">Profile</router-link>
+      <router-link v-if="$store.getters['user/isAuth']" to="/new-movie">Add Movie</router-link>
+      <!--<router-link to="/profile">Profile</router-link>-->
       <router-link to="/about">About</router-link>
+      <router-link class="auth-link" to="/authorization">
+        <img :src="customLogoAuthorization"
+             alt="Authorization" class="header__logo-auth">
+      </router-link>
     </div>
   </header>
 </template>
 
 <script>
+import {isAuth} from '@/App.vue';
+
 export default {
   name: "Header",
   data() {
     return {
       customLogo: null,
+      customLogoAuthorization: null,
+      isAuth,
     }
   },
   created() {
-    this.customLogo = require('@/assets/img/logo.png')
+    this.customLogo = require('@/assets/img/logo.png');
+    this.customLogoAuthorization = require('@/assets/img/login-btn.svg');
   }
 }
 </script>
@@ -68,6 +77,11 @@ export default {
   .header__logo {
     width: 50vw;
   }
+}
+
+.header__logo-auth {
+  width: 30px;
+  height: 30px;
 }
 
 .header__title {
@@ -121,6 +135,7 @@ export default {
   text-decoration: none;
   color: #2c3e50;
   position: relative;
+  transition-duration: .3s;
 }
 
 @media screen and (max-width: 850px) {
@@ -135,7 +150,7 @@ export default {
   }
 }
 
-#nav a::before {
+#nav a:not(.auth-link)::before {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -153,9 +168,19 @@ export default {
   transition: all .5s ease;
 }
 
+#nav .auth-link:hover {
+  opacity: .6;
+  transition-duration: .3s;
+}
+
 #nav a.router-link-exact-active {
   color: #fff;
   text-shadow: 2px 2px 2px #000;
-  transform: translateY(-2px);
+  transition-duration: .3s;
+}
+
+#nav .auth-link.router-link-exact-active {
+  filter: invert(98%);
+  transition-duration: .3s;
 }
 </style>
