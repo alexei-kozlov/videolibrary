@@ -11,8 +11,12 @@
       <!--<router-link to="/profile">Profile</router-link>-->
       <router-link to="/about">About</router-link>
       <router-link class="auth-link" to="/authorization">
-        <img :src="customLogoAuthorization"
-             alt="Authorization" class="header__logo-auth">
+        <img v-if="$store.getters['user/isAuth']"
+             :src="customLogoAuthorization"
+             alt="Authorization" class="header__logo-auth header__logo-isAuth">
+        <img v-else
+             :src="customLogoAuthorization"
+             alt="Authorization" class="header__logo-auth header__logo-notAuth">
       </router-link>
     </div>
   </header>
@@ -39,8 +43,6 @@ export default {
 
 <style scoped>
 .header {
-  /*border: 3px solid #00f;*/
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,8 +181,12 @@ export default {
   transition-duration: .3s;
 }
 
-#nav .auth-link.router-link-exact-active {
-  filter: invert(98%);
+#nav .auth-link .header__logo-isAuth {
+  filter: invert(57%) sepia(92%) saturate(5046%) hue-rotate(126deg) brightness(99%) contrast(81%);
+  transition-duration: .3s;
+}
+#nav .auth-link .header__logo-notAuth {
+  filter: invert(13%) sepia(87%) saturate(6010%) hue-rotate(353deg) brightness(100%) contrast(92%);
   transition-duration: .3s;
 }
 </style>

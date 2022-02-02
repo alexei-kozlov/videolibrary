@@ -1,9 +1,11 @@
 <template>
-  <label for="text_about">{{ label }}</label>
-  <textarea id="text_about" class="form-control mb-4 rounded"
-            :placeholder="placeholderText"
-            v-model="inputValue">
-  </textarea>
+  <label class="text-left">
+    {{ label }}
+    <textarea class="form-control mb-4 rounded"
+              :placeholder="placeholderText"
+              v-model="inputValue">
+    </textarea>
+  </label>
   <!--<small class="text-left mb-3">About you: {{ inputValue }}</small>-->
 </template>
 

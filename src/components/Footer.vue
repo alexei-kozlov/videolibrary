@@ -2,7 +2,7 @@
   <footer class="footer" data-vue-component="Footer">
     <div class="footer__text">
       <h2 class="footer__title">Search my movie</h2>
-      <p class="footer__copyright">©2022 - All rights reserved</p>
+      <p class="footer__copyright">© 2022 - All rights reserved</p>
     </div>
   </footer>
 </template>
@@ -15,14 +15,12 @@ export default {
 
 <style scoped>
 .footer {
-  /*border: 3px solid #00f;*/
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: auto;
-  margin: 20px auto;
+  margin: 40px auto 20px;
   padding: 10px 0;
   border-top: 2px solid #fff;
 }
@@ -47,7 +45,6 @@ export default {
 
 .footer__text {
   margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;

@@ -1,10 +1,13 @@
 <template>
-  <label for="user_name">{{ label }}</label>
-  <input id="user_name" class="form-control mb-4 rounded"
-         v-model="inputValue"
-         :placeholder="placeholder"
-         :required="required"
-         :type="type">
+  <label class="text-left">
+    {{ label }}
+    <input class="form-control mb-4 rounded"
+           v-model="inputValue"
+           :placeholder="placeholder"
+           :required="required"
+           :type="type">
+  </label>
+
   <!--<small class="text-left mb-3">Your name: {{ inputValue }}</small>-->
 </template>
 

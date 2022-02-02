@@ -19,12 +19,15 @@
             To IMDb
             <span class="btn__arrow">&rarr;</span>
           </a>
+          <div class="block-control border-left bg-white rounded text-center font-weight-bold">
+            <router-link class="d-inline-block w-100" :to="`/library/${movie.Title}`">GoTo</router-link>
+          </div>
         </div>
       </li>
       <!--<li v-for="movie in libraryArray" :key="movie.imdbID"
           class="mx-auto w-75 d-flex justify-content-between align-items-center border-bottom py-1">
         <p class="block-description m-0 text-left p-1">
-          &lt;!&ndash;<span>{{ movie.id }}) </span>&ndash;&gt;
+          <span>{{ movie.id }}) </span>
           <span>{{ movie.Title }}</span>
           <span> ({{ movie.Year }})</span>
         </p>
