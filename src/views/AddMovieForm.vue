@@ -2,15 +2,32 @@
   <section class="new-movie">
     <h1 class="title new-movie__title">Add Movie</h1>
     <p class="new-movie__content">Adding movie in Library will be placed here</p>
-    <form class="new-movie__form container p-0" action="javascript:void(0);">
-      <custom-input label="Movie title:"
-                    v-model="movie_title"
-                    placeholderText="Enter movie title"></custom-input>
-      <custom-input label="Movie year:"
-                    v-model="movie_year"
-                    placeholderText="Enter movie year"></custom-input>
+    <form class="new-movie__form
+                 d-flex flex-column align-items-start
+                 px-5 py-4 col-xs-10 col-sm-8 col-md-6 col-lg-4 mx-auto
+                 rounded">
+      <custom-input v-model="movie_title"
+                    label="Movie title:"
+                    type="text"
+                    required
+                    placeholder="Enter movie title"/>
+      <custom-input v-model="movie_year"
+                    label="Movie year:"
+                    type="text"
+                    required
+                    placeholder="Enter movie year"/>
+      <custom-input v-model="movie_imdbID"
+                    label="Movie ID:"
+                    type="text"
+                    required
+                    placeholder="Enter movie id"/>
+      <custom-input v-model="movie_posterLink"
+                    label="Movie poster-link:"
+                    type="text"
+                    required
+                    placeholder="Add link to movie's poster"/>
       <custom-btn label="Add"
-                  @click="addMovie"></custom-btn>
+                  @click="addMovie"/>
     </form>
   </section>
 </template>
@@ -22,11 +39,19 @@ export default {
     return {
       movie_title: '',
       movie_year: '',
+      movie_imdbID: '',
+      movie_posterLink: '',
     };
   },
   methods: {
     addMovie() {
-      this.$store.dispatch("library/createMovie", {Title: this.movie_title, Year: this.movie_year});
+      this.$store.dispatch("library/createMovie",
+          {
+            Title: this.movie_title,
+            Year: this.movie_year,
+            imdbID: this.movie_imdbID,
+            Poster: this.movie_posterLink,
+          });
       this.$router.push("/library");
     },
   },
@@ -35,8 +60,6 @@ export default {
 
 <style scoped>
 .new-movie__form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  background: rgba(0, 0, 0, .4);
 }
 </style>

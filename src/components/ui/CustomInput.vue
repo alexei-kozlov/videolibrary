@@ -1,8 +1,10 @@
 <template>
   <label for="user_name">{{ label }}</label>
-  <input id="user_name" class="form-control mb-4" type="text"
+  <input id="user_name" class="form-control mb-4 rounded"
          v-model="inputValue"
-         :placeholder="placeholderText">
+         :placeholder="placeholder"
+         :required="required"
+         :type="type">
   <!--<small class="text-left mb-3">Your name: {{ inputValue }}</small>-->
 </template>
 
@@ -23,9 +25,17 @@ export default {
       type: String,
       default: 'Custom label',
     },
-    placeholderText: {
+    placeholder: {
       type: String,
       default: 'Custom text',
+    },
+    required: {
+      type: Boolean,
+      default: true,
+    },
+    type: {
+      type: String,
+      default: '',
     },
   },
   watch: {

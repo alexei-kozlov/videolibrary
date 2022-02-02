@@ -16,7 +16,7 @@ export default {
   mutations: {},
   actions: {
     signIn(context, data) {
-      if (data.login === 'alex' && data.password === '1234') {
+      if (data.login === 'alex' && data.password === '7319') {
         context.state.token = data.login;
         return 'OK';
       }

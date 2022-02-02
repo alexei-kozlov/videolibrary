@@ -3,7 +3,7 @@ export default {
   loadLibrary(context) {
     if (!context.state.initLoad) {
       context.state.initLoad = true;
-      /*fetch('http://www.omdbapi.com/?t=Agnelli&y=2017&plot=full&r=json&apikey=1ce9470d')
+      /*fetch('https://www.omdbapi.com/?s=Agnelli&r=json&apikey=1ce9470d')
           .then((response) => response.json())
           .then((json) => context.state.library = context.state.library.concat(json));*/
     }
@@ -18,7 +18,6 @@ export default {
     })
         .then((response) => response.json())
         .then((json) => context.commit('addMovie', json));*/
-    console.log(data);
     context.commit('addMovie', data)
   },
 }

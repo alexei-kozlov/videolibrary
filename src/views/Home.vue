@@ -22,8 +22,6 @@ export default {
 
 <style>
 .movie__list {
-  /*border: 3px solid #00f;*/
-
   width: 100%;
   height: auto;
   margin: 10px auto 30px;

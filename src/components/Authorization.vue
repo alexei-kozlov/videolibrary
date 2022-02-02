@@ -2,15 +2,21 @@
   <section class="sign-in">
     <h1 class="title sign-in__title">Sign In</h1>
     <p class="sign-in__content">Please sign in to continue</p>
-    <form class="sign-in__form container p-0" action="javascript:void(0);">
-      <custom-input label="Your login:"
-                    v-model="login"
-                    placeholderText="Enter your login"></custom-input>
-      <custom-input label="Your password:"
-                    v-model="password"
-                    placeholderText="Enter your password"></custom-input>
+    <form class="sign-in__form
+                 d-flex flex-column align-items-start
+                 px-5 py-4 col-xs-10 col-sm-8 col-md-6 col-lg-4 mx-auto rounded">
+      <custom-input v-model="login"
+                    label="Your login:"
+                    type="text"
+                    required
+                    placeholder="Enter your login"/>
+      <custom-input v-model="password"
+                    label="Your password:"
+                    type="password"
+                    required
+                    placeholder="Enter your password"/>
       <custom-btn label="Sign In"
-                  @click="signInClick"></custom-btn>
+                  @click="signInClick"/>
     </form>
   </section>
 </template>
@@ -46,8 +52,6 @@ export default {
 
 <style scoped>
 .sign-in__form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  background: rgba(0, 0, 0, .4);
 }
 </style>

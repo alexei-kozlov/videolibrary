@@ -1,7 +1,7 @@
 <template>
   <img class="bg-image" :src="customBg" alt="Image">
   <Header></Header>
-  <main>
+  <main class="container">
     <router-view/>
   </main>
   <Footer></Footer>

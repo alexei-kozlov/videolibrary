@@ -1,5 +1,5 @@
 <template>
-  <button type="submit" class="btn btn-primary">{{ label }}</button>
+  <button type="submit" class="btn form-btn btn-primary">{{ label }}</button>
 </template>
 
 <script>
@@ -18,5 +18,7 @@ export default {
 </script>
 
 <style scoped>
-
+.form-btn {
+  min-width: 25%;
+}
 </style>

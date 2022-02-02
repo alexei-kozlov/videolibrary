@@ -3,18 +3,35 @@
     <h1 class="title library__title">Library</h1>
     <p class="library__content">The library of movies of the current user of this service will be placed here</p>
     <p class="library__content">({{ $store.getters['library/count'] }} movies)</p>
-    <ul>
-      <li v-for="movie in libraryArray" :key="movie.Title"
-          class="mx-auto w-50 d-flex justify-content-between align-items-center border-bottom py-1">
-        <p class="block-description m-0">
-<!--          <span>{{ movie.id }}) </span>-->
+    <ul id="movies" class="movie__list w-100 mx-auto mt-2 mb-4 d-flex justify-content-around flex-wrap rounded">
+      <li v-for="movie in libraryArray" :key="movie.imdbID"
+          class="movie__item">
+        <div class="movie__poster-wrapper">
+          <img class="movie__poster"
+               :alt="movie.Title"
+               :src="movie.Poster !== 'N/A' ? movie.Poster : noPoster">
+        </div>
+        <div class="movie__bottom">
+          <span class="movie__title">"{{ movie.Title }}"</span>
+          <span class="movie__year">({{ movie.Year }})</span>
+          <a class="btn movie__btn" target="_blank"
+             :href="'http://www.imdb.com/title/' + movie.imdbID">
+            To IMDb
+            <span class="btn__arrow">&rarr;</span>
+          </a>
+        </div>
+      </li>
+      <!--<li v-for="movie in libraryArray" :key="movie.imdbID"
+          class="mx-auto w-75 d-flex justify-content-between align-items-center border-bottom py-1">
+        <p class="block-description m-0 text-left p-1">
+          &lt;!&ndash;<span>{{ movie.id }}) </span>&ndash;&gt;
           <span>{{ movie.Title }}</span>
           <span> ({{ movie.Year }})</span>
         </p>
-        <div class="block-control"> |
+        <div class="block-control border-left bg-white rounded text-center font-weight-bold">
           <router-link :to="`/library/${movie.Title}`">GoTo</router-link>
         </div>
-      </li>
+      </li>-->
     </ul>
     <!--{{ $store.getters.likesCaption }}-->
   </section>
@@ -22,6 +39,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      noPoster: null,
+    }
+  },
   computed: {
     libraryArray() {
       return this.$store.getters['library/all'];
@@ -32,6 +54,13 @@ export default {
   },
   created() {
     this.$store.dispatch("library/loadLibrary");
-  },
+    this.noPoster = require('@/assets/img/no-poster.png');
+  }
 };
 </script>
+
+<style>
+.movie__list {
+  background: rgba(0, 0, 0, .4);
+}
+</style>

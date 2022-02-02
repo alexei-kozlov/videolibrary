@@ -1,6 +1,6 @@
 <template>
   <label for="text_about">{{ label }}</label>
-  <textarea id="text_about" class="form-control mb-4"
+  <textarea id="text_about" class="form-control mb-4 rounded"
             :placeholder="placeholderText"
             v-model="inputValue">
   </textarea>
