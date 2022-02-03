@@ -14,10 +14,10 @@
         <img :src="customIconSignIn" style="width: 33px; height: 33px;"
              alt="Authorization" title="Sign In" class="header__logo-auth header__logo-isAuth">
       </router-link>
-      <div v-if="$store.getters['user/isAuth']" class="auth-link" @click="signOutClick">
+      <router-link v-if="$store.getters['user/isAuth']" class="auth-link" @click="signOutClick" to>
         <img :src="customIconSignOut"
              alt="Authorization" title="Sign Out" class="header__logo-auth header__logo-notAuth">
-      </div>
+      </router-link>
     </div>
   </header>
 </template>
@@ -154,6 +154,7 @@ export default {
   color: #2c3e50;
   position: relative;
   transition-duration: .3s;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 850px) {
