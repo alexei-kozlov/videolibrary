@@ -11,12 +11,12 @@
       <!--<router-link to="/profile">Profile</router-link>-->
       <router-link to="/about">About</router-link>
       <router-link v-if="!$store.getters['user/isAuth']" class="auth-link" to="/authorization">
-        <img :src="customIconSignIn" style="width: 33px;height: 33px;"
-             alt="Authorization" class="header__logo-auth header__logo-isAuth">
+        <img :src="customIconSignIn" style="width: 33px; height: 33px;"
+             alt="Authorization" title="Sign In" class="header__logo-auth header__logo-isAuth">
       </router-link>
       <div v-if="$store.getters['user/isAuth']" class="auth-link" @click="signOutClick">
         <img :src="customIconSignOut"
-             alt="Authorization" class="header__logo-auth header__logo-notAuth">
+             alt="Authorization" title="Sign Out" class="header__logo-auth header__logo-notAuth">
       </div>
     </div>
   </header>
@@ -119,10 +119,10 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 30px 0 30px 30px;
   width: 70%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -130,6 +130,7 @@ export default {
   #nav {
     width: 100%;
     padding: 30px 0;
+    justify-content: space-between;
   }
 }
 
@@ -142,6 +143,7 @@ export default {
 }
 
 #nav a {
+  margin: 0 20px;
   font-family: Montserrat, Arial, sans-serif;
   font-size: 22px;
   font-style: normal;
@@ -160,7 +162,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 600px) {
   #nav a {
     margin: 10px 0;
   }
@@ -182,6 +184,10 @@ export default {
   width: 99%;
   left: 0;
   transition: all .5s ease;
+}
+
+#nav .auth-link {
+  margin-right: 0;
 }
 
 #nav .auth-link:hover {

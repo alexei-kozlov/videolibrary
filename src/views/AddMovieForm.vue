@@ -4,7 +4,7 @@
     <p class="new-movie__content">Adding movie in Library will be placed here</p>
     <form action="javascript:void(0);"
           class="new-movie__form
-                 d-flex flex-column align-items-start
+                 d-flex flex-column
                  px-5 py-4 col-xs-10 col-sm-8 col-md-6 col-lg-4 mx-auto
                  rounded">
       <custom-input v-model="movie_title"
