@@ -2,7 +2,8 @@
   <section class="new-movie">
     <h1 class="title new-movie__title">Add Movie</h1>
     <p class="new-movie__content">Adding movie in Library will be placed here</p>
-    <form class="new-movie__form
+    <form action="javascript:void(0);"
+          class="new-movie__form
                  d-flex flex-column align-items-start
                  px-5 py-4 col-xs-10 col-sm-8 col-md-6 col-lg-4 mx-auto
                  rounded">
@@ -60,6 +61,7 @@ export default {
 
 <style scoped>
 .new-movie__form {
+  max-width: 320px;
   background: rgba(0, 0, 0, .4);
 }
 </style>

@@ -10,14 +10,14 @@
       <router-link v-if="$store.getters['user/isAuth']" to="/new-movie">Add Movie</router-link>
       <!--<router-link to="/profile">Profile</router-link>-->
       <router-link to="/about">About</router-link>
-      <router-link class="auth-link" to="/authorization">
-        <img v-if="$store.getters['user/isAuth']"
-             :src="customLogoAuthorization"
+      <router-link v-if="!$store.getters['user/isAuth']" class="auth-link" to="/authorization">
+        <img :src="customIconSignIn" style="width: 33px;height: 33px;"
              alt="Authorization" class="header__logo-auth header__logo-isAuth">
-        <img v-else
-             :src="customLogoAuthorization"
-             alt="Authorization" class="header__logo-auth header__logo-notAuth">
       </router-link>
+      <div v-if="$store.getters['user/isAuth']" class="auth-link" @click="signOutClick">
+        <img :src="customIconSignOut"
+             alt="Authorization" class="header__logo-auth header__logo-notAuth">
+      </div>
     </div>
   </header>
 </template>
@@ -30,13 +30,27 @@ export default {
   data() {
     return {
       customLogo: null,
-      customLogoAuthorization: null,
+      customIconSignIn: null,
+      customIconSignOut: null,
       isAuth,
-    }
+    };
   },
   created() {
     this.customLogo = require('@/assets/img/logo.png');
-    this.customLogoAuthorization = require('@/assets/img/login-btn.svg');
+    this.customIconSignIn = require('@/assets/img/sign-in-btn.svg');
+    this.customIconSignOut = require('@/assets/img/sign-out-btn.svg');
+  },
+  methods: {
+    signOutClick() {
+      this.$store.dispatch('user/signOut')
+          .then((status) => {
+            if (status === 'OK') {
+              this.$router.push('/');
+            } else if (status !== 'OK') {
+              alert('Where are you going? Come back!');
+            }
+          });
+    },
   }
 }
 </script>
@@ -171,13 +185,14 @@ export default {
 }
 
 #nav .auth-link:hover {
+  cursor: pointer;
   opacity: .6;
   transition-duration: .3s;
 }
 
 #nav a.router-link-exact-active {
   color: #fff;
-  text-shadow: 2px 2px 2px #000;
+  text-shadow: 0 0 4px #000;
   transition-duration: .3s;
 }
 
@@ -185,6 +200,7 @@ export default {
   filter: invert(57%) sepia(92%) saturate(5046%) hue-rotate(126deg) brightness(99%) contrast(81%);
   transition-duration: .3s;
 }
+
 #nav .auth-link .header__logo-notAuth {
   filter: invert(13%) sepia(87%) saturate(6010%) hue-rotate(353deg) brightness(100%) contrast(92%);
   transition-duration: .3s;

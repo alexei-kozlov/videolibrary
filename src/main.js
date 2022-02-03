@@ -1,13 +1,29 @@
+window.$ = JQuery;
+import JQuery from 'jquery'
 import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import JQuery from 'jquery'
-window.$ = JQuery;
 import CustomInput from '@/components/ui/CustomInput.vue';
 import CustomTextarea from '@/components/ui/CustomTextarea.vue';
 import CustomBtn from '@/components/ui/CustomBtn.vue';
 import CustomRadio from '@/components/ui/CustomRadio.vue';
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCKW4WnGvKhAZs77qbmUiDUFtxb_lB9Fls",
+  authDomain: "videolibrary-c5c51.firebaseapp.com",
+  projectId: "videolibrary-c5c51",
+  storageBucket: "videolibrary-c5c51.appspot.com",
+  messagingSenderId: "319341893539",
+  appId: "1:319341893539:web:df607ad59082480628ac16"
+};
+// Initialize Firebase
+initializeApp(firebaseConfig);
 
 createApp(App)
     .component('CustomInput', CustomInput)

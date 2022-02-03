@@ -60,7 +60,7 @@ export default {
 @media screen and (max-width: 850px) {
   .search__form {
     margin: 30px auto;
-    width: 75vw;
+    width: 100%;
   }
 }
 
