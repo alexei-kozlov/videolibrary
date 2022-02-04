@@ -11,6 +11,8 @@
     "core-js": "^3.6.5",
     "firebase": "^9.6.5",
     "jquery": "^3.6.0",
+    "sass-loader": "^7.2.0",
+    "sass": "^1.22.10",
     "vue": "^3.0.0",
     "vue-jquery": "^1.0.6",
     "vue-router": "^4.0.0-0",

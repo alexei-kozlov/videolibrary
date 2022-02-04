@@ -28,6 +28,19 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  border-radius: .25rem;
+}
+
+.movie__no-movies {
+  width: 650px;
+  margin: 0 auto;
+  padding: 6px;
+}
+
+@media screen and (max-width: 850px) {
+  .movie__no-movies {
+    width: 100%;
+  }
 }
 
 .movie__item {
