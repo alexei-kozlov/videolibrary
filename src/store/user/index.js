@@ -1,7 +1,7 @@
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {getAuth, signInWithEmailAndPassword, signOut} from "firebase/auth";
 
 function isValidToken(token) {
-  return !(token === '' || token === undefined);
+  return token;
 }
 
 export default {
@@ -19,22 +19,27 @@ export default {
       return state.user.email;
     },
   },
-  mutations: {},
+  mutations: {
+    setAuthUser(state, data) {
+      state.user = data || {};
+    },
+  },
   actions: {
     signIn(context, data) {
       const auth = getAuth();
       return signInWithEmailAndPassword(auth, data.login, data.password)
           .then((userCredential) => {
-            context.state.token = userCredential.user;
+            context.state.user = userCredential.user;
             return 'OK';
           })
           .catch((error) => {
             return `Error: ${error.message}`;
           });
     },
-    signOut(context) {
+    logOut(context) {
+      const auth = getAuth();
       context.state.user = {};
-      return 'OK';
+      return signOut(auth).then(() => 'OK');
     },
   },
 }

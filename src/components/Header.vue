@@ -14,7 +14,7 @@
         <img :src="customIconSignIn" style="width: 33px; height: 33px;"
              alt="Authorization" title="Sign In" class="header__logo-auth header__logo-isAuth">
       </router-link>
-      <router-link v-if="$store.getters['user/isAuth']" class="auth-link" @click="signOutClick" to>
+      <router-link v-if="$store.getters['user/isAuth']" class="auth-link" @click="logOutClick" to>
         <img :src="customIconSignOut"
              alt="Authorization" title="Sign Out" class="header__logo-auth header__logo-notAuth">
       </router-link>
@@ -41,15 +41,18 @@ export default {
     this.customIconSignOut = require('@/assets/img/sign-out-btn.svg');
   },
   methods: {
-    signOutClick() {
-      this.$store.dispatch('user/signOut')
-          .then((status) => {
-            if (status === 'OK') {
-              this.$router.push('/');
-            } else if (status !== 'OK') {
-              alert('Where are you going? Come back!');
-            }
-          });
+    logOutClick() {
+      let question = confirm('Do you really want to sign out?');
+      if (question) {
+        this.$store.dispatch('user/logOut')
+            .then((status) => {
+              if (status === 'OK') {
+                this.$router.push('/');
+              } else if (status !== 'OK') {
+                alert('Where are you going? Come back!');
+              }
+            });
+      }
     },
   }
 }
