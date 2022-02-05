@@ -3,7 +3,7 @@
     <h1 class="title library__title">Library</h1>
     <p class="library__content">The library of movies of the current user of this service will be placed here</p>
     <p class="library__content">({{ $store.getters['library/count'] }} movies)</p>
-    <ul id="movies" class="movie__list w-100 mx-auto mt-2 mb-4 d-flex justify-content-around flex-wrap rounded">
+    <ul class="movie__list w-100 mx-auto mt-2 mb-4 d-flex justify-content-around flex-wrap rounded">
       <li v-for="movie in libraryArray" :key="movie.imdbID"
           class="movie__item">
         <div class="movie__poster-wrapper">
@@ -62,8 +62,6 @@ export default {
 };
 </script>
 
-<style>
-.movie__list {
-  background: rgba(0, 0, 0, .4);
-}
+<style scoped>
+
 </style>

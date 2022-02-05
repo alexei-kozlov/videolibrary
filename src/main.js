@@ -69,7 +69,7 @@ createApp(App)
           // Если поиск прошел удачно, перезапишем в HTML список фильмов
           if (data.Response === 'True') {
             $.each(data.Search, function (i, movie) {
-              movieHTML += '<li class="movie__item" id="' + movie.imdbID + '" style="background: rgba(255,255,255,.5);"><div class="movie__poster-wrapper">';
+              movieHTML += '<li class="movie__item" id="' + movie.imdbID + '"><div class="movie__poster-wrapper">';
               if (movie.Poster !== 'N/A') {
                 // Если постер есть, покажем его
                 movieHTML += '<img class="movie__poster" src="' + movie.Poster + '" alt="Poster">';
@@ -83,8 +83,7 @@ createApp(App)
               movieHTML += '<span class="movie__year">' + '(' + movie.Year + ')' + '</span>';
               movieHTML += '<a class="btn movie__btn" href="http://www.imdb.com/title/' + movie.imdbID + '" target="_blank">To IMDb <span class="btn__arrow">&rarr;</span></a></div></li>';
             });
-          } else movieHTML += '<li class="movie__no-movies" ' +
-              'style="text-align: left; width: 100%;">' +
+          } else movieHTML += '<li class="movie__no-movies">' +
               'No movies found that match: ' + '"' + searchMovie + '"';
 
           $('.movie__list').html(movieHTML);

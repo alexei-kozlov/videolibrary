@@ -3,7 +3,8 @@ import Home from '@/views/Home.vue'
 import Library from '@/views/Library.vue'
 import Profile from '@/views/Profile.vue'
 import AddMovieForm from '@/views/AddMovieForm.vue'
-import Authorization from '@/components/Authorization.vue'
+import SignIn from '@/components/SignIn.vue'
+import SignUp from '@/components/SignUp.vue'
 import MovieForm from '@/components/MovieForm.vue'
 import About from '@/views/About.vue'
 import store from '@/store/index.js';
@@ -46,9 +47,14 @@ const routes = [
     component: About,
   },
   {
-    path: '/authorization',
-    name: 'Authorization',
-    component: Authorization,
+    path: '/sign-in',
+    name: 'SignIn',
+    component: SignIn,
+  },
+  {
+    path: '/sign-up',
+    name: 'SignUp',
+    component: SignUp,
   }
 ]
 

@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .btn {
   width: 225px;
   height: 60px;
@@ -36,131 +36,119 @@ export default {
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
-}
 
-.btn:hover, .btn:focus {
-  background: linear-gradient(45deg, #5474fd 0%, #5474fd 40%, #496bfe 40%, #496bfe 100%);
-}
+  &:hover,
+  &:focus {
+    background: linear-gradient(45deg, #5474fd 0%, #5474fd 40%, #496bfe 40%, #496bfe 100%);
+  }
 
-.btn:active {
-  border: 1px solid #0039ff;
-  opacity: 0.9;
-}
-
-.search__form {
-  width: 650px;
-  height: 60px;
-  border: 2px solid #0039ff;
-  border-radius: 5px;
-  text-align: left;
-  position: relative;
-  margin: 50px auto;
-}
-
-@media screen and (max-width: 850px) {
-  .search__form {
-    margin: 30px auto;
-    width: 100%;
+  &:active {
+    border: 1px solid #0039ff;
+    opacity: 0.9;
   }
 }
 
-@media screen and (max-width: 520px) {
-  .search__form {
-    height: 30px;
+.search {
+  &__form {
+    width: 650px;
+    height: 60px;
+    border: 2px solid #0039ff;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+    margin: 50px auto;
+
+    @media screen and (max-width: 850px) {
+      margin: 30px auto;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 520px) {
+      height: 30px;
+    }
   }
-}
 
-.search__input {
-  width: 78%;
-  height: 100%;
-  margin: 0;
-  padding: 0 10px;
-  background: #fff;
-  outline: none;
-  border: none;
-  font-family: "Nova Mono", "Roboto Mono", monospace;
-  font-size: 20px;
-  color: #5474fd;
-  letter-spacing: 0.1em;
-}
+  &__input {
+    width: 78%;
+    height: 100%;
+    margin: 0;
+    padding: 0 10px;
+    background: #fff;
+    outline: none;
+    border: none;
+    font-family: "Nova Mono", "Roboto Mono", monospace;
+    font-size: 20px;
+    color: #5474fd;
+    letter-spacing: 0.1em;
 
-@media screen and (max-width: 520px) {
-  .search__input {
-    width: 88%;
+    @media screen and (max-width: 520px) {
+      width: 88%;
+    }
+
+    &::placeholder {
+      font-family: "Nova Mono", "Roboto Mono", monospace;
+      font-size: 22px;
+      color: rgba(84, 116, 253, 0.5);
+      letter-spacing: 0.1em;
+      text-align: left;
+      padding: 0 10px;
+
+      @media screen and (max-width: 600px) {
+        padding: 0;
+      }
+
+      @media screen and (max-width: 500px) {
+        font-size: 4vw;
+        text-align: center;
+      }
+    }
   }
-}
 
-.search__input::placeholder {
-  font-family: "Nova Mono", "Roboto Mono", monospace;
-  font-size: 22px;
-  color: rgba(84, 116, 253, 0.5);
-  letter-spacing: 0.1em;
-  text-align: left;
-  padding: 0 10px;
-}
-
-@media screen and (max-width: 600px) {
-  .search__input::placeholder {
-    padding: 0;
+  &__label {
+    display: initial;
   }
-}
 
-@media screen and (max-width: 500px) {
-  .search__input::placeholder {
-    font-size: 4vw;
-    text-align: center;
+  &__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 146px;
+    height: 56px;
+    padding-left: 12px;
+    background: #496bfe;
+    outline: none;
+    border-left: 2px solid #0039ff;
+
+    &:hover,
+    &:focus {
+      background: #5474fd;
+    }
+
+    @media screen and (max-width: 520px) {
+      width: 12%;
+      height: 26px;
+      padding: 5px;
+    }
   }
-}
 
-.search__label {
-  display: initial;
-}
+  &__btn-name {
+    text-align: left;
 
-.search__btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 146px;
-  height: 56px;
-  padding-left: 12px;
-  background: #496bfe;
-  outline: none;
-  border-left: 2px solid #0039ff;
-}
-
-.search__btn:hover {
-  background: #5474fd;
-}
-
-@media screen and (max-width: 520px) {
-  .search__btn {
-    width: 12%;
-    height: 26px;
-    padding: 5px;
+    @media screen and (max-width: 520px) {
+      display: none;
+    }
   }
-}
 
-.search__btn-name {
-  text-align: left;
-}
+  &__btn-icon {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
 
-@media screen and (max-width: 520px) {
-  .search__btn-name {
-    display: none;
-  }
-}
-
-.search__btn-icon {
-  position: absolute;
-  top: 50%;
-  right: 13px;
-  transform: translateY(-50%);
-}
-
-@media screen and (max-width: 520px) {
-  .search__btn-icon {
-    right: 50%;
-    transform: translate(50%, -50%) scale(0.8);
+    @media screen and (max-width: 520px) {
+      right: 50%;
+      transform: translate(50%, -50%) scale(0.8);
+    }
   }
 }
 </style>

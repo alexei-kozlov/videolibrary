@@ -1,4 +1,4 @@
-import {getAuth, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut} from "firebase/auth";
 
 function isValidToken(token) {
   return token;
@@ -40,6 +40,17 @@ export default {
       const auth = getAuth();
       context.state.user = {};
       return signOut(auth).then(() => 'OK');
+    },
+    signUp(context, data) {
+      const auth = getAuth();
+      return createUserWithEmailAndPassword(auth, data.login, data.password)
+          .then((userCredential) => {
+            context.state.user = userCredential.user;
+            return 'OK';
+          })
+          .catch((error) => {
+            return `Error: ${error.message}`;
+          });
     },
   },
 }

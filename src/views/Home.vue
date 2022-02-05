@@ -29,12 +29,16 @@ export default {
   justify-content: space-around;
   flex-wrap: wrap;
   border-radius: .25rem;
+  background: rgba(0, 0, 0, .4);
 }
 
 .movie__no-movies {
   width: 650px;
+  word-break: break-all;
   margin: 0 auto;
   padding: 6px;
+  text-align: left;
+  background: rgba(0, 0, 0, .5);
 }
 
 @media screen and (max-width: 850px) {

@@ -18,6 +18,11 @@
                     placeholder="Enter your password"/>
       <custom-btn label="Sign In"
                   @click="signInClick"/>
+      <small class="mt-3">Don't have an account yet?
+        <span style="text-decoration: underline;">
+          <router-link style="color: white;" to="/sign-up">Sign Up</router-link>
+        </span>
+      </small>
     </form>
   </section>
 </template>
@@ -26,7 +31,6 @@
 import {isAuth} from '@/App.vue';
 
 export default {
-  name: "Authorization",
   data() {
     return {
       login: '',
