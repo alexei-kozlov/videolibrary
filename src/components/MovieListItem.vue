@@ -12,7 +12,7 @@
       <a class="btn movie__btn" target="_blank"
          href="https://www.imdb.com/title/tt111111">
         To IMDb
-        <span class="btn__arrow">&rarr;</span>
+        <span class="movie__btn-arrow">&rarr;</span>
       </a>
     </div>
   </li>-->

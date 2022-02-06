@@ -9,10 +9,10 @@ import CustomInput from '@/components/ui/CustomInput.vue';
 import CustomTextarea from '@/components/ui/CustomTextarea.vue';
 import CustomBtn from '@/components/ui/CustomBtn.vue';
 import CustomRadio from '@/components/ui/CustomRadio.vue';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import {initializeApp} from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -49,58 +49,3 @@ createApp(App)
     .use(router)
     .use(store)
     .mount('#app');
-
-//http://www.omdbapi.com/?t=Agnelli&y=2017&plot=full&r=json&apikey=1ce9470d
-(function ($) {
-  $(function () {
-    let apikey = '1ce9470d';
-
-    // Функция поиска
-    function search() {
-      // Получим значение поискового запроса их поля ввода
-      let searchMovie = $('#search').val().toLowerCase(),
-          // Пустой HTML для вывода на страницу данных, которые вернули в результате поиска
-          movieHTML = "";
-      $.ajax({
-        url: 'https://www.omdbapi.com/?apikey=' + apikey + '&s=' + searchMovie + '&y=' + '&plot=full' + '&r=json',
-        method: 'GET',
-        dataType: 'json',
-        success: function (data) {
-          // Если поиск прошел удачно, перезапишем в HTML список фильмов
-          if (data.Response === 'True') {
-            $.each(data.Search, function (i, movie) {
-              movieHTML += '<li class="movie__item" id="' + movie.imdbID + '"><div class="movie__poster-wrapper">';
-              if (movie.Poster !== 'N/A') {
-                // Если постер есть, покажем его
-                movieHTML += '<img class="movie__poster" src="' + movie.Poster + '" alt="Poster">';
-              } else {
-                // Если нет, выведем "постер без постера"
-                let urlNoImage = 'https://m.media-amazon.com/images/S/sash/4FyxwxECzL-U1J8.png';
-                movieHTML += '<img class="movie__no-poster" src="' + urlNoImage + '" alt="No Poster" style="width: 100%;">';
-              }
-              movieHTML += '</div>';
-              movieHTML += '<div class="movie__bottom"><span class="movie__title">' + movie.Title + '</span>';
-              movieHTML += '<span class="movie__year">' + '(' + movie.Year + ')' + '</span>';
-              movieHTML += '<a class="btn movie__btn" href="http://www.imdb.com/title/' + movie.imdbID + '" target="_blank">To IMDb <span class="btn__arrow">&rarr;</span></a></div></li>';
-            });
-          } else movieHTML += '<li class="movie__no-movies">' +
-              'No movies found that match: ' + '"' + searchMovie + '"';
-
-          $('.movie__list').html(movieHTML);
-        },// Конец поиска
-      }); // Конец AJAX запроса
-    } // Конец функции поиска
-
-    // Функция ввода-вывода
-    $('#search').keyup(function (evt) {
-      search();
-      if (evt.keyCode === 13) {
-        search();
-        $(this).blur();
-      }
-    });
-    $('#submit').on('click', function () {
-      search();
-    });
-  });
-})(JQuery);

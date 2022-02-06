@@ -24,19 +24,7 @@
           </div>
         </div>
       </li>
-      <!--<li v-for="movie in libraryArray" :key="movie.imdbID"
-          class="mx-auto w-75 d-flex justify-content-between align-items-center border-bottom py-1">
-        <p class="block-description m-0 text-left p-1">
-          <span>{{ movie.id }}) </span>
-          <span>{{ movie.Title }}</span>
-          <span> ({{ movie.Year }})</span>
-        </p>
-        <div class="block-control border-left bg-white rounded text-center font-weight-bold">
-          <router-link :to="`/library/${movie.Title}`">GoTo</router-link>
-        </div>
-      </li>-->
     </ul>
-    <!--{{ $store.getters.likesCaption }}-->
   </section>
 </template>
 
@@ -50,9 +38,6 @@ export default {
   computed: {
     libraryArray() {
       return this.$store.getters['library/all'];
-    },
-    genreArray() {
-      return this.$store.getters['library/genre'](genreId);
     },
   },
   created() {

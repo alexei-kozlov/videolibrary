@@ -12,7 +12,4 @@ export default {
   libraryFavourite(state) {
     return state.library.filter(movie => movie.type === 'isFavourite');
   },
-  libraryByGenreId(state) {
-    return () => state.library.filter(library => library.genreId === id);
-  }
 }
