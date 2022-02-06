@@ -2,7 +2,7 @@
   <label class="text-left">
     {{ label }}
     <textarea class="form-control mb-4 rounded"
-              :placeholder="placeholderText"
+              :placeholder="placeholder"
               v-model="inputValue">
     </textarea>
   </label>
@@ -26,7 +26,7 @@ export default {
       type: String,
       default: 'Custom label',
     },
-    placeholderText: {
+    placeholder: {
       type: String,
       default: 'Custom text',
     },

@@ -39,6 +39,9 @@ export default {
     libraryArray() {
       return this.$store.getters['library/all'];
     },
+    genreArray() {
+      return this.$store.getters['library/genre'](genreId);
+    },
   },
   created() {
     this.$store.dispatch("library/loadLibrary");
