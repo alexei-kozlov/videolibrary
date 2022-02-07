@@ -112,7 +112,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    width: 146px;
+    width: 156px;
     height: 56px;
     padding-left: 12px;
     background: #496bfe;

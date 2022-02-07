@@ -5,6 +5,10 @@ export default {
   all(state) {
     return state.library;
   },
+  movieById(state) {
+    return (id) => state.library.find(item => item.id === id);
+  },
+
   single(state, i) {
     let movie = state.library.map(obj => obj.Title);
     return movie[i];

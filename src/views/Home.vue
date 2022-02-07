@@ -10,7 +10,7 @@
 <script>
 import SearchForm from '@/components/SearchForm.vue';
 import MovieListItem from '@/components/MovieListItem.vue';
-import JQuery from "jquery";
+import JQuery from 'jquery';
 
 export default {
   name: "Search",

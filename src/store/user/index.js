@@ -7,49 +7,60 @@ function isValidToken(token) {
 export default {
   namespaced: true,
   state: {
-    token: '',
     name: '',
-    user: {},
+    uid: '',
   },
   getters: {
     isAuth(state) {
-      return isValidToken(state.user.accessToken);
+      return isValidToken(state.uid);
     },
-    userEmail(state) {
-      return state.user.email;
-    },
+    name(state) {
+      return state.name.split('@')[0];
+    }
   },
   mutations: {
-    setAuthUser(state, data) {
-      state.user = data || {};
-    },
+    setUser(state, data) {
+      state.name = data.email;
+      state.uid = data.uid;
+    }
   },
   actions: {
     signIn(context, data) {
       const auth = getAuth();
       return signInWithEmailAndPassword(auth, data.login, data.password)
           .then((userCredential) => {
-            context.state.user = userCredential.user;
+            console.log(userCredential);
+            //   const user = userCredential.user;
+            context.state.name = userCredential.user.email;
+            context.state.uid = userCredential.user.uid;
             return 'OK';
           })
           .catch((error) => {
-            return `Error: ${error.message}`;
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(errorMessage);
           });
     },
     logOut(context) {
       const auth = getAuth();
-      context.state.user = {};
-      return signOut(auth).then(() => 'OK');
+      signOut(auth).then(() => {
+        context.state.uid = '';
+        context.state.name = '';
+      });
     },
     signUp(context, data) {
       const auth = getAuth();
       return createUserWithEmailAndPassword(auth, data.login, data.password)
           .then((userCredential) => {
-            context.state.user = userCredential.user;
-            return 'OK';
+            console.log(userCredential);
+            //   const user = userCredential.user;
+            context.state.name = userCredential.user.email;
+            context.state.uid = userCredential.user.uid;
           })
           .catch((error) => {
-            return `Error: ${error.message}`;
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(errorMessage);
           });
     },
   },

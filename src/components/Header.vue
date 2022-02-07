@@ -1,22 +1,22 @@
 <template>
   <header class="header" data-vue-component="Header">
+    <p v-if="$store.getters['user/isAuth']" class="header__hi">Hi, {{ $store.getters['user/name'] }}!</p>
     <div class="header__logo">
-      <img :src="customLogo"
-           alt="Search Movie" class="header__logo">
+      <img :src="customLogo" alt="Search Movie" class="header__logo">
     </div>
     <div id="nav">
       <router-link to="/">Home</router-link>
       <router-link to="/library">Library</router-link>
-      <router-link v-if="$store.getters['user/isAuth']" to="/new-movie">Add Movie</router-link>
+      <router-link v-if="$store.getters['user/isAuth']" to="/movie/new">Add Movie</router-link>
       <router-link v-if="$store.getters['user/isAuth']" to="/profile">Profile</router-link>
       <router-link to="/about">About</router-link>
       <router-link v-if="$store.getters['user/isAuth']" class="auth-link" @click="showModal" to>
-        <img :src="customIconSignOut"
-             alt="Authorization" title="Sign Out" class="header__logo-auth header__logo-notAuth">
+        <img :src="customIconSignOut" alt="Authorization" title="Sign Out"
+             class="header__logo-auth header__logo-notAuth">
       </router-link>
       <div v-if="!$store.getters['user/isAuth']" id="sign-menu">
-        <div class="selectlink-control">
-          <img :src="customIconSignIn" style="width: 33px; height: 33px;"
+        <div class="select-link-control">
+          <img :src="customIconSignIn"
                alt="Authorization" title="Sign In/Up" class="header__logo-auth header__logo-isAuth">
         </div>
         <ul>
@@ -34,8 +34,8 @@
         </template>
         <template #body>Do you really want to sign out?</template>
         <template #footer>
-          <button class="btn btn-secondary" @click="onNoClick">No</button>
-          <button class="btn btn-primary" @click="logOutClick">Yes</button>
+          <button class="modal-btn btn btn-secondary" @click="onNoClick">No</button>
+          <button class="modal-btn btn btn-primary" @click="logOutClick">Yes</button>
         </template>
       </custom-modal>
     </div>
@@ -70,26 +70,20 @@ export default {
       this.$refs.popup.shown = true;
     },
     logOutClick() {
-      this.$store.dispatch('user/logOut')
-          .then((status) => {
-            if (status === 'OK') {
-              this.$router.push('/');
-            } else if (status !== 'OK') {
-              alert('Where are you going? Come back!');
-            }
-          });
       this.$refs.popup.shown = false;
+      this.$store.dispatch('user/logOut');
+      this.$router.push('/');
     },
     onNoClick() {
       this.$refs.popup.shown = false;
     },
   },
-}
+};
 $(function () {
-  $('.selectlink-control').click(function () {
+  $('.select-link-control').click(function () {
     let $menu_popup = $(this).next();
     $menu_popup.slideToggle(200, function () {
-      $('.selectlink ul').not($menu_popup).slideUp(200);
+      $('.select-link ul').not($menu_popup).slideUp(200);
       if ($menu_popup.is(':hidden')) {
         $('body').removeClass('body_pointer');
       } else {
@@ -100,9 +94,9 @@ $(function () {
   });
 
   $(document).on('click', function (e) {
-    if (!$(e.target).closest('.selectlink').length) {
+    if (!$(e.target).closest('.select-link').length) {
       $('body').removeClass('body_pointer');
-      $('.selectlink ul').slideUp(200);
+      $('.select-link ul').slideUp(200);
     }
   });
 });
@@ -115,8 +109,9 @@ $(function () {
   align-items: center;
   width: 100%;
   height: auto;
+  position: relative;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 680px) {
     flex-direction: column;
     margin: 0 auto 20px;
   }
@@ -126,11 +121,26 @@ $(function () {
     margin: 0 auto 20px;
   }
 
+  &__hi {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 4px;
+    margin: 0;
+    background: rgba(0, 0, 0, .4);
+    border-radius: 2px;
+
+    @media screen and (max-width: 425px) {
+      left: 0;
+      right: auto;
+    }
+  }
+
   &__logo {
     width: 10vw;
     height: auto;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 680px) {
       width: 20vw;
     }
 
@@ -168,7 +178,7 @@ $(function () {
   justify-content: flex-end;
   align-items: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 680px) {
     width: 100%;
     padding: 30px 0;
     justify-content: space-between;
@@ -198,7 +208,7 @@ $(function () {
       font-size: 18px;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 680px) {
       margin: 10px 0;
     }
 
@@ -240,6 +250,8 @@ $(function () {
   .header__logo-isAuth {
     filter: invert(57%) sepia(92%) saturate(5046%) hue-rotate(126deg) brightness(99%) contrast(81%);
     transition-duration: .3s;
+    width: 33px;
+    height: 33px;
   }
 
   .auth-link .header__logo-notAuth {
@@ -256,7 +268,7 @@ $(function () {
   margin: 10px;
   background: transparent;
 
-  .selectlink-control {
+  .select-link-control {
     position: relative;
     border-radius: 4px;
     cursor: pointer;
@@ -299,5 +311,9 @@ $(function () {
     font-size: 18px;
     cursor: pointer;
   }
+}
+
+.modal-btn {
+  width: 40%;
 }
 </style>

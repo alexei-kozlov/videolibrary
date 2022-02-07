@@ -1,7 +1,7 @@
 <template>
   <section class="new-movie">
     <h1 class="title new-movie__title">Add Movie</h1>
-    <p class="new-movie__content">Adding movie in Library will be placed here</p>
+    <p class="new-movie__content">Adding movie in your Library</p>
     <form action="javascript:void(0);"
           class="new-movie__form
                  d-flex flex-column
@@ -48,6 +48,17 @@ export default {
     addMovie() {
       this.$store.dispatch("library/createMovie",
           {
+            Title: this.movie_title,
+            Year: this.movie_year,
+            imdbID: this.movie_imdbID,
+            Poster: this.movie_posterLink,
+          });
+      this.$router.push("/library");
+    },
+    onUpdateMovie() {
+      this.$store.dispatch("library/updateMovie",
+          {
+            id: 1,
             Title: this.movie_title,
             Year: this.movie_year,
             imdbID: this.movie_imdbID,

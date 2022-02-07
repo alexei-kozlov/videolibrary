@@ -45,8 +45,8 @@ export default {
         password: this.password,
       }).then((status) => {
         if (status === 'OK') {
-          this.$router.push('/new-movie')
-        } else if (status !== 'OK') {
+          this.$router.push('/')
+        } else if (status === 'error') {
           alert('Authorization error! Please try again!');
         }
       });

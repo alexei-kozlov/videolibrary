@@ -1,12 +1,13 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import Home from '@/views/Home.vue'
-import Library from '@/views/Library.vue'
-import Profile from '@/views/Profile.vue'
-import AddMovieForm from '@/views/AddMovieForm.vue'
-import SignIn from '@/components/SignIn.vue'
-import SignUp from '@/components/SignUp.vue'
-import MovieForm from '@/components/MovieForm.vue'
-import About from '@/views/About.vue'
+import {createRouter, createWebHistory} from 'vue-router';
+import Home from '@/views/Home.vue';
+import Library from '@/views/Library.vue';
+import Profile from '@/views/Profile.vue';
+import AddMovieForm from '@/components/AddMovieForm.vue';
+import EditMovieForm from '@/components/EditMovieForm.vue';
+import Movie from '@/components/Movie.vue';
+import SignIn from '@/components/SignIn.vue';
+import SignUp from '@/components/SignUp.vue';
+import About from '@/views/About.vue';
 import store from '@/store/index.js';
 
 const routes = [
@@ -26,20 +27,26 @@ const routes = [
     component: Profile,
   },
   {
-    path: '/new-movie',
-    name: 'add-movie',
+    path: '/movie/new',
+    name: 'Add Movie',
     component: AddMovieForm,
     beforeEnter(to, from, next) {
       if (store.getters['user/isAuth']) {
         next();
       } else {
-        next('/authorization');
+        next('/');
       }
     },
   },
   {
-    path: '/library/:title',
-    component: MovieForm,
+    path: '/movie/edit/:id',
+    name: 'Edit Movie',
+    component: EditMovieForm,
+  },
+  {
+    path: '/movie/:id',
+    name: 'Movie',
+    component: Movie,
   },
   {
     path: '/about',
@@ -48,12 +55,12 @@ const routes = [
   },
   {
     path: '/sign-in',
-    name: 'SignIn',
+    name: 'Sign In',
     component: SignIn,
   },
   {
     path: '/sign-up',
-    name: 'SignUp',
+    name: 'Sign Up',
     component: SignUp,
   }
 ]

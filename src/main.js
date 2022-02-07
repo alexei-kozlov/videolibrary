@@ -9,35 +9,43 @@ import CustomInput from '@/components/ui/CustomInput.vue';
 import CustomTextarea from '@/components/ui/CustomTextarea.vue';
 import CustomBtn from '@/components/ui/CustomBtn.vue';
 import CustomRadio from '@/components/ui/CustomRadio.vue';
-import {getAuth, onAuthStateChanged} from "firebase/auth";
 
-// Import the functions you need from the SDKs you need
-import {initializeApp} from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Import the functions
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, onValue } from 'firebase/database';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCKW4WnGvKhAZs77qbmUiDUFtxb_lB9Fls",
   authDomain: "videolibrary-c5c51.firebaseapp.com",
+  databaseURL: "https://videolibrary-c5c51-default-rtdb.europe-west1.firebasedatabase.app/",
   projectId: "videolibrary-c5c51",
   storageBucket: "videolibrary-c5c51.appspot.com",
   messagingSenderId: "319341893539",
   appId: "1:319341893539:web:df607ad59082480628ac16"
 };
+
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
+const db = getDatabase();
 const auth = getAuth();
+
+const path = '/library';
+onValue(ref(db, path), (snapshot) => {
+  store.commit('library/clear');
+  const libraryObject = snapshot.val();
+  for (const [key, value] of Object.entries(libraryObject)) {
+    store.commit('library/addMovie', value);
+  }
+});
+
 onAuthStateChanged(auth, (user) => {
-  store.commit('user/setAuthUser', user);
   if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
+    store.commit('user/setUser', user);
   } else {
-    // User is signed out
-    // ...
+    store.dispatch('user/logOut');
   }
 });
 
