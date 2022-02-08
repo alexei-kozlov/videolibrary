@@ -77,6 +77,7 @@ export default {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
+  opacity: .5;
 }
 
 .modal-container {
