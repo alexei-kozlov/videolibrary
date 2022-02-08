@@ -29,8 +29,6 @@ export default {
       const auth = getAuth();
       return signInWithEmailAndPassword(auth, data.login, data.password)
           .then((userCredential) => {
-            console.log(userCredential);
-            //   const user = userCredential.user;
             context.state.name = userCredential.user.email;
             context.state.uid = userCredential.user.uid;
             return 'OK';
@@ -38,7 +36,6 @@ export default {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.error(errorMessage);
           });
     },
     logOut(context) {
@@ -52,15 +49,12 @@ export default {
       const auth = getAuth();
       return createUserWithEmailAndPassword(auth, data.login, data.password)
           .then((userCredential) => {
-            console.log(userCredential);
-            //   const user = userCredential.user;
             context.state.name = userCredential.user.email;
             context.state.uid = userCredential.user.uid;
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.error(errorMessage);
           });
     },
   },

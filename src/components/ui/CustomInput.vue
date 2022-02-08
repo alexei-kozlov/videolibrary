@@ -1,13 +1,17 @@
 <template>
-  <label class="text-left">
+  <label class="text-left" :for="id">
     {{ label }}
     <input class="form-control mb-4 rounded"
            v-model="inputValue"
            :placeholder="placeholder"
            :required="required"
-           :type="type">
+           :type="type"
+           :min="min"
+           :max="max"
+           :minlength="minlength"
+           :maxlength="maxlength"
+           :id="id">
   </label>
-
   <!--<small class="text-left mb-3">Your name: {{ inputValue }}</small>-->
 </template>
 
@@ -16,17 +20,19 @@ export default {
   name: "CustomInput",
   data() {
     return {
-      inputValue: '',
+      inputValue: null,
     }
   },
   props: {
     modelValue: {
-      type: String,
       default: null,
     },
     label: {
       type: String,
       default: 'Custom label',
+    },
+    id: {
+      type: String,
     },
     placeholder: {
       type: String,
@@ -34,9 +40,25 @@ export default {
     },
     required: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     type: {
+      type: String,
+      default: '',
+    },
+    min: {
+      type: String,
+      default: '',
+    },
+    max: {
+      type: String,
+      default: '',
+    },
+    minlength: {
+      type: String,
+      default: '',
+    },
+    maxlength: {
       type: String,
       default: '',
     },

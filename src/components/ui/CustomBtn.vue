@@ -1,5 +1,9 @@
 <template>
-  <button type="submit" class="btn form-btn btn-primary">{{ label }}</button>
+  <button class="btn form-btn btn-primary"
+          type="submit"
+          :disabled="disabled">
+    {{ label }}
+  </button>
 </template>
 
 <script>
@@ -12,6 +16,10 @@ export default {
     label: {
       type: String,
       default: 'Custom Btn',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 }

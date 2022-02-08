@@ -1,8 +1,8 @@
 <template>
   <section class="new-movie">
     <h1 class="title new-movie__title">Add Movie</h1>
-    <p class="new-movie__content">Adding movie in your Library</p>
-    <form action="javascript:void(0);"
+    <p class="new-movie__content">Add a movie to your library</p>
+    <form @submit.prevent="addMovie()"
           class="new-movie__form
                  d-flex flex-column
                  px-5 py-4 col-xs-10 col-sm-8 col-md-6 col-lg-4 mx-auto
@@ -14,7 +14,9 @@
                     placeholder="Enter movie title"/>
       <custom-input v-model="movie_year"
                     label="Movie year:"
-                    type="text"
+                    type="number"
+                    min="1900"
+                    max="2030"
                     required
                     placeholder="Enter movie year"/>
       <custom-input v-model="movie_imdbID"
@@ -24,11 +26,10 @@
                     placeholder="Enter movie id"/>
       <custom-input v-model="movie_posterLink"
                     label="Movie poster-link:"
-                    type="text"
+                    type="url"
                     required
                     placeholder="Add link to movie's poster"/>
-      <custom-btn label="Add"
-                  @click="addMovie"/>
+      <custom-btn label="Add"/>
     </form>
   </section>
 </template>

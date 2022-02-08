@@ -1,33 +1,33 @@
 <template>
-  <section class="sign-up">
+  <section v-if="!$store.getters['user/isAuth']" class="sign-up">
     <h1 class="title sign-up__title">Sign Up</h1>
     <p class="sign-up__content">Please sign up to continue</p>
-    <form action="javascript:void(0);"
+    <form @submit.prevent="signUpClick()"
           class="sign-up__form
                  d-flex flex-column
                  px-5 py-4 col-xs-8 col-sm-8 col-md-6 col-lg-4 mx-auto rounded">
-      <custom-input v-model="your_name"
-                    label="Your name:"
-                    type="text"
-                    required
-                    placeholder="Enter your name"/>
       <custom-input v-model="login"
                     label="Your email:"
                     type="email"
                     required
                     placeholder="Enter your email"/>
       <custom-input v-model="password"
+                    id="password"
                     label="Your password:"
                     type="password"
+                    minlength="6"
                     required
-                    placeholder="At least 6 characters"/>
+                    placeholder="At least 6 characters"
+                    @change="validatePassword()"/>
       <custom-input v-model="confirm_password"
+                    id="confirm-password"
                     label="Confirm password:"
                     type="password"
+                    minlength="6"
                     required
-                    placeholder="Confirm your password"/>
-      <custom-btn label="Sign Up"
-                  @click="signUpClick"/>
+                    placeholder="Confirm your password"
+                    @keyup="validatePassword()"/>
+      <custom-btn label="Sign Up"/>
       <small class="mt-3">Already have an account?
         <span style="text-decoration: underline;">
           <router-link style="color: white;" to="/sign-in">Sign In</router-link>
@@ -43,7 +43,6 @@ import {isAuth} from '@/App.vue';
 export default {
   data() {
     return {
-      your_name: '',
       login: '',
       password: '',
       confirm_password: '',
@@ -51,12 +50,22 @@ export default {
     }
   },
   methods: {
+    validatePassword() {
+      let password = document.getElementById('password'),
+          confirmPassword = document.getElementById('confirm-password');
+      if (password.value !== confirmPassword.value) {
+        confirmPassword.setCustomValidity('Passwords don\'t match');
+      } else {
+        confirmPassword.setCustomValidity('');
+      }
+    },
     signUpClick() {
-      this.$store.dispatch("user/signUp", {
+      this.$store.dispatch('user/signUp', {
         login: this.login,
         password: this.password,
       }).then((status) => {
-        if (status === 'OK') {
+        console.log(status);
+        if (status !== 'error') {
           this.$router.push('/');
         } else if (status === 'error') {
           alert('Registration error! Please try again!');

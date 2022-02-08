@@ -11,7 +11,7 @@
   </custom-modal>-->
   <section class="library">
     <h1 class="title library__title">Library</h1>
-    <p class="library__content">The library of movies of the current user of this service will be placed here</p>
+    <p class="library__content">The library of movies of the current user of this service</p>
     <p class="library__content">({{ $store.getters['library/count'] }} movies)</p>
     <ul class="movie__list w-100 mx-auto mt-2 mb-4 d-flex justify-content-around flex-wrap rounded">
       <li v-for="movie in libraryArray" :key="movie.id"
@@ -92,6 +92,9 @@ export default {
   &__item {
     padding-top: 24px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__del-btn {

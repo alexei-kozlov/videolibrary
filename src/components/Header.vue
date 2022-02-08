@@ -14,7 +14,7 @@
         <img :src="customIconSignOut" alt="Authorization" title="Sign Out"
              class="header__logo-auth header__logo-notAuth">
       </router-link>
-      <div v-if="!$store.getters['user/isAuth']" id="sign-menu">
+      <div v-else id="sign-menu">
         <div class="select-link-control">
           <img :src="customIconSignIn"
                alt="Authorization" title="Sign In/Up" class="header__logo-auth header__logo-isAuth">
@@ -69,10 +69,10 @@ export default {
     showModal() {
       this.$refs.popup.shown = true;
     },
-    logOutClick() {
+    logOutClick(delta) {
       this.$refs.popup.shown = false;
       this.$store.dispatch('user/logOut');
-      this.$router.push('/');
+      this.$router.go(delta);
     },
     onNoClick() {
       this.$refs.popup.shown = false;

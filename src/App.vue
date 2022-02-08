@@ -30,6 +30,9 @@ export default {
 </script>
 
 <style>
+main {
+  /*overflow-y: auto;*/
+}
 .bg-image {
   position: fixed;
   top: 0;

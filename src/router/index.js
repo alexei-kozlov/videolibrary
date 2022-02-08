@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import Home from '@/views/Home.vue';
 import Library from '@/views/Library.vue';
 import Profile from '@/views/Profile.vue';
+import MovieListItem from '@/components/MovieListItem.vue';
 import AddMovieForm from '@/components/AddMovieForm.vue';
 import EditMovieForm from '@/components/EditMovieForm.vue';
 import Movie from '@/components/Movie.vue';
@@ -17,14 +18,38 @@ const routes = [
     component: Home,
   },
   {
+    path: '/movieIMDb/:id',
+    name: 'MovieListItem',
+    component: MovieListItem,
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+  },
+  {
     path: '/library',
     name: 'Library',
     component: Library,
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isAuth']) {
+        next();
+      } else {
+        next('/');
+      }
+    },
   },
   {
     path: '/profile',
     name: 'Profile',
     component: Profile,
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isAuth']) {
+        next();
+      } else {
+        next('/');
+      }
+    },
   },
   {
     path: '/movie/new',
@@ -42,26 +67,49 @@ const routes = [
     path: '/movie/edit/:id',
     name: 'Edit Movie',
     component: EditMovieForm,
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isAuth']) {
+        next();
+      } else {
+        next('/');
+      }
+    },
   },
   {
     path: '/movie/:id',
     name: 'Movie',
     component: Movie,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About,
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isAuth']) {
+        next();
+      } else {
+        next('/');
+      }
+    },
   },
   {
     path: '/sign-in',
     name: 'Sign In',
     component: SignIn,
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isAuth']) {
+        next('/');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/sign-up',
     name: 'Sign Up',
     component: SignUp,
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isAuth']) {
+        next('/');
+      } else {
+        next();
+      }
+    },
   }
 ]
 
