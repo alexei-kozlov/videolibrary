@@ -98,8 +98,12 @@ export default {
     margin: 50px auto;
 
     @media screen and (max-width: 850px) {
-      margin: 30px auto;
+      margin: 40px auto 30px;
       width: 100%;
+    }
+
+    @media screen and (max-width: 680px) {
+      margin: 30px auto 20px;
     }
 
     @media screen and (max-width: 520px) {

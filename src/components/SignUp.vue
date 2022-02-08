@@ -65,9 +65,9 @@ export default {
         password: this.password,
       }).then((status) => {
         console.log(status);
-        if (status !== 'error') {
+        if (status === 'OK') {
           this.$router.push('/');
-        } else if (status === 'error') {
+        } else if (status !== 'OK') {
           alert('Registration error! Please try again!');
         }
       });

@@ -1,15 +1,15 @@
 <template>
   <header class="header" data-vue-component="Header">
-    <p v-if="$store.getters['user/isAuth']" class="header__hi">Hi, {{ $store.getters['user/name'] }}!</p>
+    <p v-if="$store.getters['user/isAuth']" class="header__hi">Hello, dear {{ $store.getters['user/name'] }}!</p>
     <div class="header__logo">
       <img :src="customLogo" alt="Search Movie" class="header__logo">
     </div>
     <div id="nav">
       <router-link to="/">Home</router-link>
-      <router-link to="/library">Library</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link v-if="$store.getters['user/isAuth']" to="/library">Library</router-link>
       <router-link v-if="$store.getters['user/isAuth']" to="/movie/new">Add Movie</router-link>
       <router-link v-if="$store.getters['user/isAuth']" to="/profile">Profile</router-link>
-      <router-link to="/about">About</router-link>
       <router-link v-if="$store.getters['user/isAuth']" class="auth-link" @click="showModal" to>
         <img :src="customIconSignOut" alt="Authorization" title="Sign Out"
              class="header__logo-auth header__logo-notAuth">

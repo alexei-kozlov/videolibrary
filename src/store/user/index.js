@@ -51,6 +51,7 @@ export default {
           .then((userCredential) => {
             context.state.name = userCredential.user.email;
             context.state.uid = userCredential.user.uid;
+            return 'OK';
           })
           .catch((error) => {
             const errorCode = error.code;

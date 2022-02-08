@@ -44,9 +44,9 @@ export default {
         login: this.login,
         password: this.password,
       }).then((status) => {
-        if (status !== 'error') {
+        if (status === 'OK') {
           this.$router.push('/')
-        } else if (status === 'error') {
+        } else if (status !== 'OK') {
           alert('Authorization error! Please try again!');
         }
       });
